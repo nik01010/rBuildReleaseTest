@@ -3,7 +3,7 @@
 Test R package 
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/nik01010/rBuildReleaseTest.svg?branch=master)](https://travis-ci.org/nik01010/rBuildReleaseTest)
+[![Travis build status](https://travis-ci.org/nik01010/rBuildReleaseTest.svg?branch=develop)](https://travis-ci.org/nik01010/rBuildReleaseTest)
 <!-- badges: end -->
 
 
