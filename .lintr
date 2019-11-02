@@ -17,11 +17,11 @@ linters: with_defaults(
   single_quotes_linter = NULL,
   pipe_continuation_linter,
   seq_linter,
-  trailing_whitespace_linter,
   T_and_F_symbol_linter,
-  undesirable_function_linter(),
-  undesirable_operator_linter(),
-  todo_comment_linter(todo = c("TODO", "TO DO", "todo", "to do"))
+  trailing_whitespace_linter = NULL,
+  undesirable_function_linter = NULL,
+  undesirable_operator_linter = NULL,
+  todo_comment_linter = NULL
   # WIP: add custom lint rules for:
   # - parameter names should be specified in functions
   # - white space rules for equals signs

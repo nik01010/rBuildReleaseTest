@@ -1,4 +1,4 @@
-if(Sys.getenv("ENV") != "TRAVIS")
+if (Sys.getenv("ENV") != "TRAVIS")
 {
   options(stringsAsFactors = FALSE)
   

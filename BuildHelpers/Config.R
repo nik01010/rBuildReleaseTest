@@ -1,2 +1,4 @@
 # WORK IN PROGRESS
-appConfig <- config::get()
+
+configPath <- "./BuildHelpers/config.yml"
+appConfig <- config::get(file = configPath)
