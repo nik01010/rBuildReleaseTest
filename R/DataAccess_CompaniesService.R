@@ -4,7 +4,7 @@
 #' @param DbContext ApplicationDbContext. Database context for connecting to the
 #' Companies data. This should be an instance of the ApplicationDbContext class.
 #'
-#' @return NULL
+#' @return Object of type R6Class with methods for communication with Companies data.
 #'
 #' @section Methods:
 #' \code{$new()} Initialize a new Company Service instance.

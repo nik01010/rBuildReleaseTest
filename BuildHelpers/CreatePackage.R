@@ -36,6 +36,13 @@ use_build_ignore("BuildHelpers")
 
 use_news_md()
 
+# SET UP VIGNETTES
+# Requires Pandoc installation
+# Requires rmarkdown package
+usethis::use_vignette("rBuildReleaseTest-vignette")
+# Will add VignetteBuilder: knitr at end of DESCRIPTION
+# and update Depends section 
+
 use_jenkins()
 
 use_travis()
@@ -54,6 +61,9 @@ library(devtools) # ALSO NEED RTools
 # Sys.getenv('PATH')
 
 devtools::document()
+
+
+devtools::build_vignettes()
 
 checkResult <- devtools::check(quiet = TRUE)
 checkResult

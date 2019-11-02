@@ -6,8 +6,7 @@
 #' @param collection String. Database collection to connect to.
 #' @param verbose Boolean. Option to emit more connection messages. Defaults to TRUE.
 #'
-#' @return Object of type \code{\link{R6Class}} with methods for communication with the database.
-#' @field DbConnection MongoDB connection object from the \code{\link{mongo}} function.
+#' @return Object of type R6Class with methods for communication with the database.
 #'
 #' @examples
 #' \dontrun{

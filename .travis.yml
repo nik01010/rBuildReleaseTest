@@ -3,11 +3,3 @@
 language: R
 sudo: false
 cache: packages
-latex: false
-
-# Versions of R
-r:
-  - release
-  #- oldrel
-  #- devel
-  
