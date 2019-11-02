@@ -9,7 +9,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
-    R (>= 3.6.1)
+    R (>= 3.2.0)
 Imports: 
     lintr,
     logging,

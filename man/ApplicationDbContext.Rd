@@ -8,27 +8,12 @@
 \usage{
 ApplicationDbContext
 }
-\arguments{
-\item{connectionString}{String. Connection string to use.}
-
-\item{database}{String. Database to connect to.}
-
-\item{collection}{String. Database collection to connect to.}
-
-\item{verbose}{Boolean. Option to emit more connection messages. Defaults to TRUE.}
-}
 \value{
-Object of type \code{\link{R6Class}} with methods for communication with the database.
+Object of type R6Class with methods for communication with the database.
 }
 \description{
 Base class for the application database context
 }
-\section{Fields}{
-
-\describe{
-\item{\code{DbConnection}}{MongoDB connection object from the \code{\link{mongo}} function.}
-}}
-
 \examples{
 \dontrun{
 mongoConnectionString = "mongodb+srv://admin:example"

@@ -1,21 +1,18 @@
 # CompaniesService --------------------------------------------------------
 #' Service for interacting with Companies data.
 #'
-#' @param DbContext ApplicationDbContext. Database context for connecting to the
-#' Companies data. This should be an instance of the ApplicationDbContext class.
-#'
 #' @return Object of type R6Class with methods for communication with Companies data.
 #'
 #' @section Methods:
-#' \code{$new()} Initialize a new Company Service instance.
+#' new() Initialize a new Company Service instance.
 #'
-#' \code{$getCompaniesCount()} Returns the number of Companies.
+#' getCompaniesCount() Returns the number of Companies.
 #'
-#' \code{$getCompanies()} Returns a data frame of all Companies.
+#' getCompanies() Returns a data frame of all Companies.
 #'
-#' \code{$getCompany(companyName)} Returns a data frame for the required Company name.
+#' getCompany(companyName) Returns a data frame for the required Company name.
 #'
-#' \code{$getOldestCompanies(limit)} Returns a data frame of the oldest companies, for the required limit.
+#' getOldestCompanies(limit) Returns a data frame of the oldest companies, for the required limit.
 #'
 #' @examples
 #' \dontrun{

@@ -1,11 +1,6 @@
 # ApplicationDbContext ----------------------------------------------------
 #' Base class for the application database context
 #'
-#' @param connectionString String. Connection string to use.
-#' @param database String. Database to connect to.
-#' @param collection String. Database collection to connect to.
-#' @param verbose Boolean. Option to emit more connection messages. Defaults to TRUE.
-#'
 #' @return Object of type R6Class with methods for communication with the database.
 #'
 #' @examples

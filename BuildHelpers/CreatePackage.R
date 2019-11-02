@@ -63,7 +63,7 @@ library(devtools) # ALSO NEED RTools
 devtools::document()
 
 
-devtools::build_vignettes()
+# devtools::build_vignettes()
 
 checkResult <- devtools::check(quiet = TRUE)
 checkResult
