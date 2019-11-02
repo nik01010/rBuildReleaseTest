@@ -1,0 +1,22 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: R
+cache: packages
+
+# Versions of R
+r:
+  - oldrel
+  - release
+  - devel
+
+# CRAN dependencies
+r_packages:
+  -testthat
+  -lintr
+  -logging
+  -glue
+  -R6
+  -mongolite
+  -config
+  -dplyr
+  -magrittr

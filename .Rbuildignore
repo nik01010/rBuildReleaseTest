@@ -1,0 +1,8 @@
+^rBuildReleaseTest\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^Makefile$
+^Jenkinsfile$
+^\.lintr$
+^BuildHelpers$
+^\.travis\.yml$

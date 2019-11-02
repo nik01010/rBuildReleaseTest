@@ -1,0 +1,4 @@
+default:
+  mongoDb:
+    host: "a"
+    user: "b"

@@ -1,0 +1,22 @@
+Package: rBuildReleaseTest
+Title: R Build and Release Test Package
+Version: 0.0.0.9000
+Authors@R: person("Nik", "Lilovski", email = "nik.lilovski@outlook.com",
+                  role = c("aut", "cre"))
+Maintainer: Nik Lilovski <nik.lilovski@outlook.com>
+Description: Test R package to explore automated build and release pipelines.
+License: MIT + file LICENSE.md
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    lintr,
+    logging,
+    glue,
+    R6,
+    mongolite,
+    config,
+    dplyr,
+    magrittr
+Suggests: 
+    testthat
+RoxygenNote: 6.1.1
