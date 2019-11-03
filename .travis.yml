@@ -3,6 +3,9 @@
 language: R
 r: 
   - release
+
+services:
+  - mongodb
   
 sudo: false
 cache: packages
@@ -13,5 +16,9 @@ warnings_are_errors: false
 #  - tlmgr install texinfo
 #  - tlmgr install index
 
+before_script:
+  - sleep 15
+  - mongo IntegrationTest --eval 'db.createUser({user: "travis", pwd: "test", roles: ["dbAdmin"]});'
+  
 after_success:
   - Rscript -e 'covr::codecov()'
