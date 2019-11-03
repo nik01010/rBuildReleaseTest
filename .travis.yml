@@ -12,3 +12,6 @@ warnings_are_errors: false
 #before_install:
 #  - tlmgr install texinfo
 #  - tlmgr install index
+
+after_success:
+  - Rscript -e 'covr::codecov()'

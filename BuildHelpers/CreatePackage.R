@@ -17,6 +17,14 @@ use_mit_license("YOUR NAME HERE")
 
 use_testthat()
 
+
+use_coverage()
+# Creates codecov.yml file - need to manually change threshold
+# Adds badge to ReadMe - need to manually change branch if needed
+# Need to manually add below lines to .travis.yml file:
+# after_success:
+#   - Rscript -e 'covr::codecov()'
+
 use_package("lintr")
 use_package("logging")
 use_package("glue")

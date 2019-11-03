@@ -25,6 +25,7 @@ linters: with_defaults(
   # WIP: add custom lint rules for:
   # - parameter names should be specified in functions
   # - white space rules for equals signs
+  # - unit tests should use arrange/act/assert pattern
   # - etc
   )
 exclude: "# Exclude Linting"
