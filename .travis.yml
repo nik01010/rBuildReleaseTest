@@ -1,24 +1,11 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: R
-r: 
+r:
   - release
-
 services:
   - mongodb
-  
 sudo: false
 cache: packages
 latex: false
 warnings_are_errors: false
-
-#before_install:
-#  - tlmgr install texinfo
-#  - tlmgr install index
-
-before_script:
-  - sleep 15
-  - mongo IntegrationTest --eval 'db.createUser({user: "travis", pwd: "test", roles: ["dbAdmin"]});'
-  
 after_success:
   - Rscript -e 'covr::codecov()'
