@@ -13,6 +13,8 @@
 #' getCompany(companyName) Returns a data frame for the required Company name.
 #'
 #' getOldestCompanies(limit) Returns a data frame of the oldest companies, for the required limit.
+#' 
+#' getNumberOfCompaniesFoundedPerYear() Returns the number of companies founded per year.
 #'
 #' @examples
 #' \dontrun{
@@ -68,6 +70,40 @@ CompaniesService <- R6::R6Class(
         sort = '{"founded_year": 1}',
         limit = limit
       )
+      return(companies)
+    },
+    
+    getNumberOfCompaniesFoundedPerYear = function()
+    {
+      query <- '
+        [
+          {
+            "$match": {
+              "founded_year": {
+                "$exists": true,
+                "$ne": null
+              }
+            }
+          },
+          {
+            "$group": {
+              "_id": "$founded_year",
+              "count": {
+                "$sum": 1
+              }
+            }
+          },
+          {
+            "$sort": {
+              "_id": 1
+            }
+          }
+        ]
+      '
+      companies <- private$context$aggregate(pipeline = query)
+      companies <- companies %>%
+        dplyr::rename('founded_year' = '_id')
+      
       return(companies)
     }
   )

@@ -25,6 +25,8 @@ getCompanies() Returns a data frame of all Companies.
 getCompany(companyName) Returns a data frame for the required Company name.
 
 getOldestCompanies(limit) Returns a data frame of the oldest companies, for the required limit.
+
+getNumberOfCompaniesFoundedPerYear() Returns the number of companies founded per year.
 }
 
 \examples{

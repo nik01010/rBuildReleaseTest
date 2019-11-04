@@ -107,3 +107,23 @@ test_that("GetOldestCompanies_ShouldFilterOutNulls_WhenCalled", {
   # Assert
   expect_equal(expectedCompanies, result)
 })
+
+test_that("GetNumberOfCompaniesFoundedPerYear_ShouldReturnCorrectCounts_WhenCalled", {
+  # Arrange
+  testContext$DbConnection$drop()
+  companies <- data.frame(
+    name = c("Company2007A", "Company2007B", "Company2009A", "Company2009B", "Company2009C"),
+    founded_year = c(2007, 2007, 2009, 2009, 2009),
+    another_value = c(1, 2, 3, 4, 5)
+  )
+  testContext$DbConnection$insert(companies)
+  expectedCounts <- companies %>%
+    dplyr::group_by(founded_year) %>%
+    dplyr::count(name = "count")
+  
+  # Act
+  result <- testCompaniesService$getNumberOfCompaniesFoundedPerYear()
+  
+  # Assert
+  expect_equal(expectedCounts, result)
+})
