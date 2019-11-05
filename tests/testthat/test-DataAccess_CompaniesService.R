@@ -45,7 +45,6 @@ test_that("GetCompanies_ShouldReturnCorrectListOfCompanies_WhenCalled", {
   expect_equal(companies, result)
 })
 
-
 test_that("GetCompany_ShouldReturnCorrectCompany_IfCalledWithValidName", {
   # Arrange
   testContext$DbConnection$drop()
@@ -65,7 +64,6 @@ test_that("GetCompany_ShouldReturnCorrectCompany_IfCalledWithValidName", {
   # Assert
   expect_equal(expectedCompany, result)
 })
-
 
 test_that("GetOldestCompanies_ShouldReturnCorrectList_IfCalledWithValidLimit", {
   # Arrange
@@ -87,7 +85,6 @@ test_that("GetOldestCompanies_ShouldReturnCorrectList_IfCalledWithValidLimit", {
   # Assert
   expect_equal(expectedCompanies, result)
 })
-
 
 test_that("GetOldestCompanies_ShouldFilterOutNulls_WhenCalled", {
   # Arrange
@@ -127,3 +124,7 @@ test_that("GetNumberOfCompaniesFoundedPerYear_ShouldReturnCorrectCounts_WhenCall
   # Assert
   expect_equal(expectedCounts, result)
 })
+
+# Teardown
+rm(testContext)
+rm(testCompaniesService)
