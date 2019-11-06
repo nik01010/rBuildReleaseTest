@@ -26,7 +26,7 @@
 #'   collection = "ExampleCollection"
 #' )
 #'
-#' testCompaniesService <- CompaniesService$new(DbContext = MongoDbContext)
+#' testCompaniesService <- CompaniesService$new(dbContext = MongoDbContext)
 #' }
 #'
 #' @export
@@ -36,12 +36,12 @@ CompaniesService <- R6::R6Class(
     context = NULL
   ),
   public = list(
-    initialize = function(DbContext)
+    initialize = function(dbContext)
     {
       # TODO: add validation to check context is of type ApplicationDbContext
       # TODO: add validation to check DbConnection object exist in context
       # TODO: add validation to check companies database and sample_training collection exist
-      private$context <- DbContext$DbConnection
+      private$context <- dbContext$DbConnection
     },
 
     getCompaniesCount = function()

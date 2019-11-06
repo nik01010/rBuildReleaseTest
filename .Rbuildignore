@@ -4,6 +4,6 @@
 ^Makefile$
 ^Jenkinsfile$
 ^\.lintr$
-^BuildHelpers$
+^Helpers$
 ^\.travis\.yml$
 ^codecov\.yml$

@@ -10,7 +10,7 @@ testContext <- rBuildReleaseTest::ApplicationDbContext$new(
   verbose = FALSE
 )
 
-testCompaniesService <- rBuildReleaseTest::CompaniesService$new(DbContext = testContext)
+testCompaniesService <- rBuildReleaseTest::CompaniesService$new(dbContext = testContext)
 
 test_that("GetCompaniesCount_ShouldReturnCorrectCount_WhenCalled", {
   # Arrange
