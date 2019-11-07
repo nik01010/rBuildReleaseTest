@@ -39,7 +39,7 @@ MongoDbContext <- ApplicationDbContext$new(
   collection = "ExampleCollection"
 )
 
-testCompaniesService <- CompaniesService$new(DbContext = MongoDbContext)
+testCompaniesService <- CompaniesService$new(dbContext = MongoDbContext)
 }
 
 }
