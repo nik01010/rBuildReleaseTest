@@ -6,6 +6,12 @@ buildOutputPath <- "../Builds/rBuildReleaseTest"
 
 # Create ------------------------------------------------------------------
 
+
+# External Software Requirements:
+# - Rtools
+# - MikTex
+# - Pandoc?
+
 # https://usethis.r-lib.org/
 library(usethis)
 
@@ -45,7 +51,10 @@ use_build_ignore("BuildHelpers")
 use_news_md()
 
 # SET UP VIGNETTES
-# Requires Pandoc installation
+# Requires Pandoc installation !
+# SET UP PDFs
+# Requires MikTex installation !
+
 # Requires rmarkdown package
 usethis::use_vignette("rBuildReleaseTest-vignette")
 # Will add VignetteBuilder: knitr at end of DESCRIPTION
