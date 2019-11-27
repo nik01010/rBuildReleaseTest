@@ -1,14 +1,22 @@
 language: R
 r:
   - release
+  
 services:
   - mongodb
+addons:
+  apt:
+    packages:
+      - libv8-dev
+      
 sudo: false
 cache: packages
 latex: false
 warnings_are_errors: false
+
 before_script:
   - sleep 15
   - mongo IntegrationTest --eval 'db.createUser({user:"travis",pwd:"test",roles:["dbAdmin"]});'
+  
 after_success:
   - Rscript -e 'covr::codecov()'
