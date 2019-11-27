@@ -18,7 +18,8 @@ Imports:
     mongolite,
     config,
     dplyr,
-    magrittr
+    magrittr,
+    jsonvalidate
 Suggests: 
     testthat,
     knitr,

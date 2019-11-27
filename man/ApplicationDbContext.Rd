@@ -4,7 +4,7 @@
 \name{ApplicationDbContext}
 \alias{ApplicationDbContext}
 \title{Base class for the application database context}
-\format{An object of class \code{R6ClassGenerator} of length 24.}
+\format{An object of class \code{R6ClassGenerator} of length 25.}
 \usage{
 ApplicationDbContext
 }

@@ -10,7 +10,12 @@ testContext <- rBuildReleaseTest::ApplicationDbContext$new(
   verbose = FALSE
 )
 
-testCompaniesService <- rBuildReleaseTest::CompaniesService$new(dbContext = testContext)
+companiesSchemaValidator <- rBuildReleaseTest::CompaniesSchemaValidator()
+
+testCompaniesService <- rBuildReleaseTest::CompaniesService$new(
+  dbContext = testContext,
+  schemaValidator = companiesSchemaValidator
+)
 
 test_that("GetCompaniesCount_ShouldReturnCorrectCount_WhenCalled", {
   # Arrange
@@ -123,6 +128,48 @@ test_that("GetNumberOfCompaniesFoundedPerYear_ShouldReturnCorrectCounts_WhenCall
   
   # Assert
   expect_equal(expectedCounts, result)
+})
+
+test_that("CreateCompany_ShouldCreateNewCompany_WhenCalledWithValidJson", {
+  # Arrange
+  testContext$DbConnection$drop()
+  companyName <- "TestCompany"
+  companyFoundedYear <- 2000
+  newCompany <- glue::glue('{{
+    "name": "{companyName}",
+    "founded_year": {companyFoundedYear}
+  }}')
+  expectedCompanies <- data.frame(
+    name = companyName,
+    founded_year = companyFoundedYear
+  )
+  
+  # Act
+  result <- testCompaniesService$createCompany(newCompany)
+  
+  # Assert
+  expect_equal(nrow(expectedCompanies), result$nInserted)
+  expect_length(result$writeErrors, 0)
+  actualCompanies <- testCompaniesService$getCompanies()
+  expect_equal(expectedCompanies, actualCompanies)
+})
+
+test_that("CreateCompany_ShouldThrowError_IfCalledWithInvalidJsonKeys", {
+  # Arrange
+  testContext$DbConnection$drop()
+  companyName <- "TestCompany"
+  companyFoundedYear <- 2000
+  invalidCompany <- glue::glue('{{
+    "Name": "{companyName}",
+    "FoundedYear": {companyFoundedYear}
+  }}')
+  
+  # Act
+  expect_error(testCompaniesService$createCompany(invalidCompany))
+
+  # Assert
+  actualCompanies <- testCompaniesService$getCompanies()
+  expect_length(actualCompanies, 0)
 })
 
 # Teardown

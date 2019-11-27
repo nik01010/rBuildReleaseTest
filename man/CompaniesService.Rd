@@ -4,7 +4,7 @@
 \name{CompaniesService}
 \alias{CompaniesService}
 \title{Service for interacting with Companies data.}
-\format{An object of class \code{R6ClassGenerator} of length 24.}
+\format{An object of class \code{R6ClassGenerator} of length 25.}
 \usage{
 CompaniesService
 }
@@ -24,9 +24,11 @@ getCompanies() Returns a data frame of all Companies.
 
 getCompany(companyName) Returns a data frame for the required Company name.
 
-getOldestCompanies(limit) Returns a data frame of the oldest companies, for the required limit.
+getOldestCompanies(limit) Returns a data frame of the oldest Companies, for the required limit.
 
-getNumberOfCompaniesFoundedPerYear() Returns the number of companies founded per year.
+getNumberOfCompaniesFoundedPerYear() Returns the number of Companies founded per year.
+
+createCompany() Creates a new Company record.
 }
 
 \examples{
