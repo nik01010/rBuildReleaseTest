@@ -7,7 +7,7 @@
 #' @export
 CompaniesSchemaValidator <- function()
 {
-  companiesSchemaPath <- '{
+  companiesSchema <- '{
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Company",
     "description": "Company record",
@@ -28,7 +28,7 @@ CompaniesSchemaValidator <- function()
         "founded_year"
     ]
   }'
-  companiesSchemaValidator <- jsonvalidate::json_validator(schema = companiesSchemaPath)
+  companiesSchemaValidator <- jsonvalidate::json_validator(schema = companiesSchema)
   
   return(companiesSchemaValidator)
 }
