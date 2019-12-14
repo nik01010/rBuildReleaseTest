@@ -32,13 +32,16 @@ This package depends on specific environment variables being present. Below are 
 #### On TravisCI:
 - Go to the required repo's Settings page, and find the Environment Variables section.
 - Add the below environment variable (encrypted if required), which will enable unit tests to be run against a dummy database as part of a build.
+
 | Variable      | Value                      |
 | ------------- |----------------------------|
 | MONGO_CS_UNIT | mongodb://127.0.0.1:27017/ |
+
 - The .travis.yml file in this repository enables the MongoDb service for each build, and will run on the standard localhost address used above.
 
 #### On Jenkins:
 - Go to the required Node's Configure settings page, and create the below environment variables. The R_LIBS variable is used by the R CMD CHECK process, although this may vary for users with different configurations or operating systems.
+
 | Variable      | Value                      |
 | ------------- |----------------------------|
 | MONGO_CS_UNIT | mongodb://127.0.0.1:27017/ |
