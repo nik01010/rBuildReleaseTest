@@ -24,9 +24,11 @@ This package depends on specific environment variables being present. Below are 
 ### On local Windows machine:
 - Ensure there is a .Renviron file in the User's Home directory (e.g. C:\Users\YourUsername\Documents).
 - Add the below variables in the .Renviron file. These will allow the package to connect to different MongoDb databases that have been configured, under different scenarios such as running production code or running tests. The Local and Unit Test connections below are pointing to a localhost instance of MongoDb, which must already be installed on the machine running the code.
-  - MONGO_CS_LOCAL = "mongodb://127.0.0.1:27017/"
-  - MONGO_CS_UNIT = "mongodb://127.0.0.1:27017/"
-  - MONGO_CS_DEV = "mongodb+srv://YourMongoAtlasConnectionString"
+```R
+MONGO_CS_LOCAL = "mongodb://127.0.0.1:27017/"
+MONGO_CS_UNIT = "mongodb://127.0.0.1:27017/"
+MONGO_CS_DEV = "mongodb+srv://YourMongoAtlasConnectionString"
+```
 
 ### On TravisCI:
 - Go to the required repo's Settings page, and find the Environment Variables section.
