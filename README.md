@@ -8,7 +8,7 @@ Proof of Concept R Package to explore MongoDb, DevOps and best practice.
 [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
 <!-- badges: end -->
 
-![Package structure](Helpers/Images/PackageStructure.png)
+![Package structure](Helpers/Images/Package.png)
 
 ## Aims
 This PoC package is used to explore:
