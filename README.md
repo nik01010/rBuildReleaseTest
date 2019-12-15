@@ -8,11 +8,13 @@ Proof of Concept R Package to explore MongoDb, DevOps and best practice.
 [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
 <!-- badges: end -->
 
+![Package structure](Doc/Images/PackageStructure.png)
+
 ## Aims
 This PoC package is used to explore:
 - Creating a low-level Service layer of code for interacting with a MongoDb database.
 - Encapsulating the Service queries in an R6 class.
-- Using an database context class with support for basic dependency injection.
+- Using a database context class with support for basic dependency injection.
 - Scripting unit tests for basic functions and integration-style unit tests for the Service database queries.
 - Adding lint rules and integrating them within a test.
 - Using environment variables for greater flexibility and securing connection strings.
@@ -23,7 +25,7 @@ This PoC package is used to explore:
 This package depends on specific environment variables being present. Below are basic instructions for setting up the variables.
 #### On local Windows machine:
 - Ensure there is a .Renviron file in the User's Home directory (e.g. C:\Users\YourUsername\Documents).
-- Add the below variables in the .Renviron file. These will allow the package to connect to different MongoDb databases that have been configured, under different scenarios such as running production code or running tests. The Local and Unit Test connections are pointing to a localhost instance of MongoDb, which must already be installed on the machine running the code.
+- Add the below connection string variables in the .Renviron file. These will allow the package to connect to different MongoDb databases that have been configured, under different scenarios such as running production code or running tests. The Local and Unit Test connections are pointing to a localhost instance of MongoDb, which must already be installed on the machine running the code.
 ```R
 MONGO_CS_LOCAL = "mongodb://127.0.0.1:27017/"
 MONGO_CS_UNIT = "mongodb://127.0.0.1:27017/"

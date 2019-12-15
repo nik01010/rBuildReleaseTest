@@ -7,3 +7,4 @@
 ^Helpers$
 ^\.travis\.yml$
 ^codecov\.yml$
+^Doc$
