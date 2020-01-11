@@ -11,12 +11,16 @@
 #' getCompanies() Returns a data frame of all Companies.
 #'
 #' getCompany(companyName) Returns a data frame for the required Company name.
+#' 
+#' getCompanyId(companyName) Returns the Id of the required Company name.
 #'
 #' getOldestCompanies(limit) Returns a data frame of the oldest Companies, for the required limit.
 #' 
 #' getNumberOfCompaniesFoundedPerYear() Returns the number of Companies founded per year.
 #' 
 #' createCompany() Creates a new Company record.
+#' 
+#' editCompany() Edits an existing Company record.
 #'
 #' @examples
 #' \dontrun{
@@ -58,15 +62,27 @@ CompaniesService <- R6::R6Class(
 
     getCompanies = function()
     {
-      companies <- private$context$find('{}')
+      companies <- private$context$find(query = '{}')
       return(companies)
     },
 
     getCompany = function(companyName)
     {
       query <- glue::glue('{{"name": "{companyName}"}}')
-      company <- private$context$find(query)
+      company <- private$context$find(query = query)
       return(company)
+    },
+    
+    getCompanyId = function(companyName)
+    {
+      query <- glue::glue('{{"name": "{companyName}"}}')
+      company <- private$context$find(query = query, fields = '{"_id": 1}')
+      if (nrow(company) == 0) {
+        return(NULL)
+      }
+      
+      companyId <- company$`_id`
+      return(companyId)
     },
 
     getOldestCompanies = function(limit = 10)
@@ -125,6 +141,46 @@ CompaniesService <- R6::R6Class(
       # TODO: check if company already exists or leave to DB?
       tryCatch({
         private$context$insert(data = companyDetails, stop_on_error = TRUE)
+      },
+      error = function(errorMessage) {
+        logging::logerror(errorMessage)
+        stop(errorMessage)
+      })
+    },
+    
+    editCompany = function(companyName, newCompanyDetails)
+    {
+      # TODO: check if companyDetails is a json object
+      # TODO: check there is only one company included
+      
+      oldCompanyId <- self$getCompanyId(companyName = companyName)
+      
+      if (is.null(oldCompanyId) || length(oldCompanyId) == 0)
+      {
+        errorMessage <- glue::glue('Company with name {companyName} does not exist.')
+        logging::logerror(errorMessage)
+        stop(errorMessage)
+      }
+      
+      if (length(oldCompanyId) > 1)
+      {
+        errorMessage <- glue::glue('Multiple companies exist with the name {companyName}.')
+        logging::logerror(errorMessage)
+        stop(errorMessage)
+      }
+      
+      logging::logdebug(glue::glue('Old company Id is: {oldCompanyId}'))
+      
+      findOldCompanyQuery <- glue::glue('
+        {{
+          "_id": {{
+            "$oid": "{oldCompanyId}"
+          }} 
+        }}
+      ')
+
+      tryCatch({
+        private$context$replace(query = findOldCompanyQuery, update = newCompanyDetails)
       },
       error = function(errorMessage) {
         logging::logerror(errorMessage)

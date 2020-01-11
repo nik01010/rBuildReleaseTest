@@ -24,11 +24,15 @@ getCompanies() Returns a data frame of all Companies.
 
 getCompany(companyName) Returns a data frame for the required Company name.
 
+getCompanyId(companyName) Returns the Id of the required Company name.
+
 getOldestCompanies(limit) Returns a data frame of the oldest Companies, for the required limit.
 
 getNumberOfCompaniesFoundedPerYear() Returns the number of Companies founded per year.
 
 createCompany() Creates a new Company record.
+
+editCompany() Edits an existing Company record.
 }
 
 \examples{
