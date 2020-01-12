@@ -21,6 +21,66 @@ This PoC package is used to explore:
 - Creating a basic CI/CD pipeline to build and test the package, in TravisCI and Jenkins.
 - Producing code coverage reports and linking them to a build.
 
+## How to use
+```R
+# Install package
+devtools::install_github("nik01010/rBuildReleaseTest", ref = "develop")
+
+# Load package
+library(rBuildReleaseTest)
+
+# Get MongoDB connection string from environment variables
+# See section in this ReadMe below for how to configure this
+mongoConnectionString = Sys.getenv("MONGO_CS_DEV")
+
+# Initialise a new database context
+companiesContext <- rBuildReleaseTest::ApplicationDbContext$new(
+  connectionString = mongoConnectionString,
+  database = "sample_training",
+  collection = "companies"
+)
+
+# Initialise a new JSON schema validator for the companies collection
+companiesSchemaValidator <- rBuildReleaseTest::CompaniesSchemaValidator()
+
+# Initialise a new database query service
+companiesService <- rBuildReleaseTest::CompaniesService$new(
+  dbContext = companiesContext,
+  schemaValidator = companiesSchemaValidator
+)
+
+# Example queries
+count <- companiesService$getCompaniesCount()
+
+allCompanies <- companiesService$getCompanies()
+
+companyFacebook <- companiesService$getCompany(companyName = "Facebook")
+companyNokia <- companiesService$getCompany(companyName = "Nokia")
+
+companyNokiaId <- companiesService$getCompanyId(companyName = "Nokia")
+
+numberOfCompaniesPerYear <- companiesService$getNumberOfCompaniesFoundedPerYear()
+
+oldestCompanies <- companiesService$getOldestCompanies(limit = 25)
+
+newCompany <- '{
+  "name": "TestCompany1",
+  "founded_year": 2019
+}'
+companiesService$createCompany(companyDetails = newCompany)
+
+newCompanyEdited <- '{
+  "name": "TestCompany1",
+  "founded_year": 2020
+}'
+companiesService$editCompany(companyName = "TestCompany1", newCompanyDetails = newCompanyEdited)
+
+# Cleanup
+rm(companiesContext)
+rm(companiesService)
+
+```
+
 ## Set up environment variables
 This package depends on specific environment variables being present. Below are basic instructions for setting up the variables.
 #### On local Windows machine:
