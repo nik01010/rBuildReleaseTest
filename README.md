@@ -24,14 +24,14 @@ This PoC package is used to explore:
 ## How to use
 ```R
 # Install package
-devtools::install_github("nik01010/rBuildReleaseTest", ref = "develop")
+devtools::install_github(repo = "nik01010/rBuildReleaseTest", ref = "develop")
 
 # Load package
 library(rBuildReleaseTest)
 
 # Get MongoDB connection string from environment variables
 # See section in this ReadMe below for how to configure this
-mongoConnectionString = Sys.getenv("MONGO_CS_DEV")
+mongoConnectionString <- Sys.getenv("MONGO_CS_DEV")
 
 # Initialise a new database context
 companiesContext <- rBuildReleaseTest::ApplicationDbContext$new(
