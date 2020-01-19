@@ -75,6 +75,8 @@ newCompanyEdited <- '{
 }'
 companiesService$editCompany(companyName = "TestCompany1", newCompanyDetails = newCompanyEdited)
 
+companiesService$deleteCompany(companyName = "TestCompany1")
+
 # Cleanup
 rm(companiesContext)
 rm(companiesService)

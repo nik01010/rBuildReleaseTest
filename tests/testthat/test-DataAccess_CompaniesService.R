@@ -268,6 +268,26 @@ test_that("EditCompany_ShouldThrowError_IfMultipleCompaniesExistWithSameName", {
   expect_equal(expectedError, result$message)
 })
 
+test_that("DeleteCompany_ShouldRemoveRecord_IfCalledForExistingCompany", {
+  # Arrange
+  testContext$DbConnection$drop()
+  companies <- data.frame(
+    name = c("Company1", "Company2", "Company3"),
+    founded_year = c(2017, 2018, 2019)
+  )
+  testContext$DbConnection$insert(data = companies)
+  companyToDelete <- "Company2"
+  expectedCompanies <- companies %>%
+    dplyr::filter(name != companyToDelete)
+
+  # Act
+  result <- testCompaniesService$deleteCompany(companyName = companyToDelete)
+
+  # Assert
+  actualCompanies <- testCompaniesService$getCompanies()
+  expect_equal(expectedCompanies, actualCompanies)
+})
+
 # Teardown
 rm(testContext)
 rm(testCompaniesService)

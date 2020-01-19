@@ -3,7 +3,6 @@
 \docType{package}
 \name{rBuildRelease}
 \alias{rBuildRelease}
-\alias{rBuildRelease-package}
 \title{Test R Build and Release}
 \description{
 rBuildReleaseTest: provides a test case for automated CI/CD pipelines in R

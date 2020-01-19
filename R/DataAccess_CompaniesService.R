@@ -3,25 +3,6 @@
 #'
 #' @return Object of type R6Class with methods for communication with Companies data.
 #'
-#' @section Methods:
-#' new() Initialize a new Company Service instance.
-#'
-#' getCompaniesCount() Returns the number of Companies.
-#'
-#' getCompanies() Returns a data frame of all Companies.
-#'
-#' getCompany(companyName) Returns a data frame for the required Company name.
-#' 
-#' getCompanyId(companyName) Returns the Id of the required Company name.
-#'
-#' getOldestCompanies(limit) Returns a data frame of the oldest Companies, for the required limit.
-#' 
-#' getNumberOfCompaniesFoundedPerYear() Returns the number of Companies founded per year.
-#' 
-#' createCompany() Creates a new Company record.
-#' 
-#' editCompany() Edits an existing Company record.
-#'
 #' @examples
 #' \dontrun{
 #' mongoConnectionString <- "mongodb+srv://admin:example"
@@ -43,6 +24,10 @@ CompaniesService <- R6::R6Class(
     schemaValidator = NULL
   ),
   public = list(
+    #' @description Initialize a new CompaniesService object.
+    #' @param dbContext ApplicationDbContext object.
+    #' @param schemaValidator SchemaValidator object.
+    #' @return A new CompaniesService object.
     initialize = function(dbContext, schemaValidator)
     {
       # TODO: add validation to check context is of type ApplicationDbContext
@@ -54,18 +39,25 @@ CompaniesService <- R6::R6Class(
       private$schemaValidator <- schemaValidator
     },
 
+    #' @description Gets the number of Companies.
+    #' @return Integer.
     getCompaniesCount = function()
     {
       count <- private$context$count()
       return(count)
     },
 
+    #' @description Returns a data frame of all Companies.
+    #' @return Dataframe.
     getCompanies = function()
     {
       companies <- private$context$find(query = '{}')
       return(companies)
     },
 
+    #' @description Returns a data frame for the required Company name.
+    #' @param companyName Company name string.
+    #' @return Dataframe.
     getCompany = function(companyName)
     {
       query <- glue::glue('{{"name": "{companyName}"}}')
@@ -73,6 +65,9 @@ CompaniesService <- R6::R6Class(
       return(company)
     },
     
+    #' @description Returns the Id of the required Company name.
+    #' @param companyName Company name string.
+    #' @return Integer.
     getCompanyId = function(companyName)
     {
       query <- glue::glue('{{"name": "{companyName}"}}')
@@ -85,6 +80,9 @@ CompaniesService <- R6::R6Class(
       return(companyId)
     },
 
+    #' @description Returns a data frame of the oldest Companies, for the required limit.
+    #' @param limit Number of Companies to limit the results to.
+    #' @return Dataframe.
     getOldestCompanies = function(limit = 10)
     {
       companies <- private$context$find(
@@ -95,6 +93,8 @@ CompaniesService <- R6::R6Class(
       return(companies)
     },
     
+    #' @description Returns the number of Companies founded per year.
+    #' @return Dataframe.
     getNumberOfCompaniesFoundedPerYear = function()
     {
       query <- '[
@@ -127,6 +127,8 @@ CompaniesService <- R6::R6Class(
       return(companies)
     },
     
+    #' @description Creates a new Company record.
+    #' @param companyDetails JSON string with new Company details.
     createCompany = function(companyDetails)
     {
       # TODO: check if companyDetails is a json object
@@ -148,6 +150,9 @@ CompaniesService <- R6::R6Class(
       })
     },
     
+    #' @description Edits an existing Company record.
+    #' @param companyName Company name string.
+    #' @param newCompanyDetails JSON string with new Company details.
     editCompany = function(companyName, newCompanyDetails)
     {
       # TODO: check if companyDetails is a json object
@@ -181,6 +186,20 @@ CompaniesService <- R6::R6Class(
 
       tryCatch({
         private$context$replace(query = findOldCompanyQuery, update = newCompanyDetails)
+      },
+      error = function(errorMessage) {
+        logging::logerror(errorMessage)
+        stop(errorMessage)
+      })
+    },
+    
+    #' @description Deletes an existing Company record.
+    #' @param companyName Company name string.
+    deleteCompany = function(companyName) 
+    {
+      query <- glue::glue('{{"name": "{companyName}"}}')
+      tryCatch({
+        private$context$remove(query = query)
       },
       error = function(errorMessage) {
         logging::logerror(errorMessage)

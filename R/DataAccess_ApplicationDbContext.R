@@ -18,8 +18,15 @@
 ApplicationDbContext <- R6::R6Class(
   classname = "ApplicationDbContext",
   public = list(
+    #' @field DbConnection Database Connection.
     DbConnection = NA,
-
+    
+    #' @description Initialize a new ApplicationDbContext object.
+    #' @param connectionString Connection string.
+    #' @param database Database name.
+    #' @param collection Collection name.
+    #' @param verbose Verbose setting. Defaults to TRUE.
+    #' @return A new ApplicationDbContext object.
     initialize = function(connectionString, database, collection, verbose = TRUE)
     {
       startMsg <- glue::glue('Connecting to Database "{database}" in Collection "{collection}".')

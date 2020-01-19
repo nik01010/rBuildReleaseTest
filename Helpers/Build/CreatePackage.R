@@ -52,9 +52,9 @@ use_build_ignore("BuildHelpers")
 use_news_md()
 
 # SET UP VIGNETTES
-# Requires Pandoc installation !
+# Requires Pandoc installation
 # SET UP PDFs
-# Requires MikTex installation !
+# Requires MikTex installation
 
 # Requires rmarkdown package
 usethis::use_vignette("rBuildReleaseTest-vignette")
@@ -80,33 +80,19 @@ library(devtools) # ALSO NEED RTools
 
 devtools::document()
 
-
 # devtools::build_vignettes()
-
-checkResult <- devtools::check(quiet = TRUE)
-checkResult
 
 # TODO: Create function for Build process ?
 # TODO: Create log for build process ?
-# TODO: Make check conditional ?
-# TODO: Add conditional check here to stop if any errors
-length(checkResult$errors)
+checkResult <- devtools::check(quiet = TRUE)
+checkResult
 
 testResult <- devtools::test() # Part of check above
-# HOW TO CHECK RESULT
-# str(testResult)
-# testResult[[1]]$results[[1]]
-### ???
-# res <- testthat::test_package('RTest', reporter = c("check", "list"))
-# ListReporter ???
-~
 
-# TODO: Investigate covr package !!!
 # https://github.com/r-lib/covr
 devtools::test_coverage()
 
-# testthat::auto_test_package() !!!!! LIVE UNIT TESTING !!!
-
+# testthat::auto_test_package()
 
 # devtools::build(
 #   path = packagePath,
@@ -114,7 +100,7 @@ devtools::test_coverage()
 #   binary = TRUE
 # )
 
-# DO SOMETHING TO INCREMENT VERSION NUMBER !!!
+# NEED TO INCREMENT VERSION NUMBER
 devtools::build(
   pkg = packagePath,
   path = buildOutputPath,
