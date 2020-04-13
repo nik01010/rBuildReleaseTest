@@ -3,5 +3,6 @@
 export(ApplicationDbContext)
 export(CompaniesSchemaValidator)
 export(CompaniesService)
+export(InitialiseLogger)
 export(divideTwoNumbers)
 importFrom(magrittr,"%>%")

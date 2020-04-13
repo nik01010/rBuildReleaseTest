@@ -29,9 +29,7 @@ ApplicationDbContext <- R6::R6Class(
     #' @return A new ApplicationDbContext object.
     initialize = function(connectionString, database, collection, verbose = TRUE)
     {
-      startMsg <- glue::glue('Connecting to Database "{database}" in Collection "{collection}".')
-      logging::logdebug(startMsg)
-
+      logger::log_info('Connecting to Database "{database}" in Collection "{collection}".')
       # TODO: Add validations to check Database and Collection are not empty and check they exist on server
 
       tryCatch(
@@ -43,13 +41,12 @@ ApplicationDbContext <- R6::R6Class(
             verbose = verbose
           )
 
-          logging::loginfo("Connection initialised successfully.")
+          logger::log_info("Connection initialised successfully.")
         },
         error = function(errorMessage)
         {
-          connectErrorMsg <- glue::glue('Database connection failed with message: {errorMessage}')
-          logging::logerror(connectErrorMsg)
-          stop(connectErrorMsg)
+          logger::log_error('Database connection failed with message: {errorMessage}')
+          stop()
         }
       )
     }

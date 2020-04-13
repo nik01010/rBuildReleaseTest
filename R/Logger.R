@@ -1,34 +1,36 @@
-logging::basicConfig(level = "DEBUG")
+# InitialiseLogger --------------------------------------------------------------------------------------
+#' Initialises a new logger
+#' 
+#' @param logLevel The required log level threshold to capture in the logger.
+#' @param logMessageFormat The required log message format.
+#' Defaults to [{level}] [{time}] [{namespace}] [{fn}]: {msg}. See logger::layout_glue_generator for options.
+#' @return NULL
+#' #' @examples
+#' \dontrun{
+#' # Using  default settings:
+#' InitialiseLogger()
+#' 
+#' # Using another log message format:
+#' InitialiseLogger(logLevel = logger::DEBUG, logMessageFormat = '{level}---{time}--- msg')
+#' }
+#' 
+#' @export
+InitialiseLogger <- function(
+  logLevel = logger::DEBUG, 
+  logMessageFormat = '[{level}] [{time}] [{namespace}] [{fn}]: {msg}'
+) {
+  .setLoggerThreshold(logLevel = logLevel)
+  .setLogMessageFormat(format = logMessageFormat)
+  logger::log_info("Logger Initialised.")
+}
 
-# TODO: Need to configure logging to console and debug
+#' @keywords internal
+.setLoggerThreshold <- function(logLevel) {
+  logger::log_threshold(level = logLevel)
+}
 
-# AppLog: main application logger -----------------------------------------
-# logDirectory <- as.character(Sys.getenv()["HOME"])
-# logDirExists <- dir.exists(logDirectory)
-# if (logDirExists)
-# {
-#   baseFileName <- "rBuildReleaseTest"
-#   dateString <- Sys.Date()
-#   logFileName <- glue::glue('{baseFileName}-{dateString}.log')
-#   logFilePath <- paste0(logDirectory, "/", logFileName)
-#   logging::addHandler(
-#     handler = logging::writeToFile,
-#     file = logFilePath,
-#     level = "DEBUG"
-#   )
-# }
-
-
-# # TestLog: test logger ----------------------------------------------------
-# logging::addHandler(
-#   handler = logging::writeToConsole,
-#   level = "DEBUG",
-#   logger = "TestLog"
-# )
-
-
-# sysInfo <- Sys.info()
-# user <- sysInfo["user"]
-# node <- sysInfo["nodename"]
-# startMsg <- glue::glue('Process started by User {user} on Node {node}')
-# loginfo(startMsg)
+#' @keywords internal
+.setLogMessageFormat <- function(format) {
+  logFormatGenerator <- logger::layout_glue_generator(format = format)
+  logger::log_layout(layout = logFormatGenerator)
+}

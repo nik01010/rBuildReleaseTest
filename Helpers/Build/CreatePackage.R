@@ -32,7 +32,7 @@ use_coverage()
 #   - Rscript -e 'covr::codecov()'
 
 use_package("lintr")
-use_package("logging")
+use_package("logger")
 use_package("glue")
 use_package("R6")
 use_package("glue")
