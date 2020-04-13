@@ -189,7 +189,30 @@ test_that("CreateCompany_ShouldThrowError_IfCalledWithInvalidJsonKeys", {
   expect_s3_class(result, "error")
   expect_equal("New company is not valid.", result$message)
   actualCompanies <- testCompaniesService$getCompanies()
-  expect_length(actualCompanies, 0)
+  expect_equal(0, nrow(actualCompanies))
+})
+
+test_that("CreateCompany_ShouldThrowError_IfCompanyAlreadyExists", {
+  # Arrange
+  testContext$DbConnection$drop()
+  companyName <- "TestCompany"
+  companyFoundedYear <- 2000
+  company <- glue::glue('{{
+    "name": "{companyName}",
+    "founded_year": {companyFoundedYear}
+  }}')
+  testCompaniesService$createCompany(companyDetails = company)
+  duplicateCompany <- company
+  expectedErrorMessage <- glue::glue("Company {companyName} already exists.")
+  
+  # Act
+  result <- expect_error(testCompaniesService$createCompany(companyDetails = duplicateCompany))
+  
+  # Assert
+  expect_s3_class(result, "error")
+  expect_equal(expectedErrorMessage, result$message)
+  actualCompanies <- testCompaniesService$getCompanies()
+  expect_equal(1, nrow(actualCompanies))
 })
 
 test_that("EditCompany_ShouldUpdateCompanyDetails_IfCalledWithCorrectDetails", {

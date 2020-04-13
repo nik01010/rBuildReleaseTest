@@ -10,14 +10,13 @@
 #' @export
 divideTwoNumbers <- function(numerator, denominator)
 {
-  logging::logdebug("Starting division process")
+  logger::log_debug("Starting division process")
   if (!is.numeric(numerator) || !is.numeric(denominator))
   {
-    errorMessage <- "Input parameters are not numeric."
-    logging::logerror(errorMessage)
-    stop(errorMessage)
+    logger::log_error("Input parameters are not numeric.")
+    stop()
   }
   divisionResult <- numerator / denominator
-  logging::loginfo(glue::glue('The result is {divisionResult}'))
+  logger::log_info('The result is {divisionResult}')
   return(divisionResult)
 }

@@ -12,7 +12,7 @@ Depends:
     R (>= 3.2.0)
 Imports: 
     lintr,
-    logging,
+    logger,
     glue,
     R6,
     mongolite,
