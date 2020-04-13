@@ -29,6 +29,9 @@ devtools::install_github(repo = "nik01010/rBuildReleaseTest", ref = "develop")
 # Load package
 library(rBuildReleaseTest)
 
+# Set up logger
+rBuildReleaseTest::InitialiseLogger()
+
 # Get MongoDB connection string from environment variables
 # See section in this ReadMe below for how to configure this
 mongoConnectionString <- Sys.getenv("MONGO_CS_DEV")
