@@ -1,6 +1,11 @@
 language: R
 r:
   - release
+  - oldrel
+  - devel
+
+repos:
+  CRAN: https://cloud.r-project.org
   
 services:
   - mongodb
