@@ -22,7 +22,6 @@ The available objects in this package are:
 \itemize{
   \item \code{\link{ApplicationDbContext}}: Base class for creating an injectable MongoDb database context.
   \item \code{\link{CompaniesService}}: Service for querying Companies data in a MongoDb database.
-  \item \code{\link{divideTwoNumbers}}: Simple example function for demonstrating unit tests.
 }
 }
 
