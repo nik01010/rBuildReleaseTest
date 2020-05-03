@@ -45,8 +45,9 @@ ApplicationDbContext <- R6::R6Class(
         },
         error = function(errorMessage)
         {
-          logger::log_error('Database connection failed with message: {errorMessage}')
-          stop()
+          message <- glue::glue('Database connection failed with message: {errorMessage}')
+          logger::log_error(message)
+          stop(message)
         }
       )
     }
