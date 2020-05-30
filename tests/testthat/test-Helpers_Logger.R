@@ -25,8 +25,3 @@ test_that("InitialiseLogger_ShouldSetupLogger_WhenCalled", {
   logEntryIsCorrect <- grepl(pattern = expectedLogPattern, x = consoleOutput)
   expect_true(logEntryIsCorrect)
 })
-
-# Teardown - reset console log
-if (sink.number() > 0) {
-  sink()
-}
