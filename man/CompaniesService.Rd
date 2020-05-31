@@ -43,6 +43,7 @@ testCompaniesService <- CompaniesService$new(dbContext = MongoDbContext)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize a new CompaniesService object.
 \subsection{Usage}{
@@ -64,6 +65,7 @@ A new CompaniesService object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getCompaniesCount"></a>}}
+\if{latex}{\out{\hypertarget{method-getCompaniesCount}{}}}
 \subsection{Method \code{getCompaniesCount()}}{
 Gets the number of Companies.
 \subsection{Usage}{
@@ -76,6 +78,7 @@ Integer.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getCompanies"></a>}}
+\if{latex}{\out{\hypertarget{method-getCompanies}{}}}
 \subsection{Method \code{getCompanies()}}{
 Returns a data frame of all Companies.
 \subsection{Usage}{
@@ -88,6 +91,7 @@ Dataframe.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getCompany"></a>}}
+\if{latex}{\out{\hypertarget{method-getCompany}{}}}
 \subsection{Method \code{getCompany()}}{
 Returns a data frame for the required Company name.
 \subsection{Usage}{
@@ -107,6 +111,7 @@ Dataframe.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getCompanyId"></a>}}
+\if{latex}{\out{\hypertarget{method-getCompanyId}{}}}
 \subsection{Method \code{getCompanyId()}}{
 Returns the Id of the required Company name.
 \subsection{Usage}{
@@ -126,6 +131,7 @@ Integer.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getOldestCompanies"></a>}}
+\if{latex}{\out{\hypertarget{method-getOldestCompanies}{}}}
 \subsection{Method \code{getOldestCompanies()}}{
 Returns a data frame of the oldest Companies, for the required limit.
 \subsection{Usage}{
@@ -145,6 +151,7 @@ Dataframe.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getNumberOfCompaniesFoundedPerYear"></a>}}
+\if{latex}{\out{\hypertarget{method-getNumberOfCompaniesFoundedPerYear}{}}}
 \subsection{Method \code{getNumberOfCompaniesFoundedPerYear()}}{
 Returns the number of Companies founded per year.
 \subsection{Usage}{
@@ -157,6 +164,7 @@ Dataframe.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-createCompany"></a>}}
+\if{latex}{\out{\hypertarget{method-createCompany}{}}}
 \subsection{Method \code{createCompany()}}{
 Creates a new Company record.
 \subsection{Usage}{
@@ -173,6 +181,7 @@ Creates a new Company record.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-editCompany"></a>}}
+\if{latex}{\out{\hypertarget{method-editCompany}{}}}
 \subsection{Method \code{editCompany()}}{
 Edits an existing Company record.
 \subsection{Usage}{
@@ -191,6 +200,7 @@ Edits an existing Company record.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-deleteCompany"></a>}}
+\if{latex}{\out{\hypertarget{method-deleteCompany}{}}}
 \subsection{Method \code{deleteCompany()}}{
 Deletes an existing Company record.
 \subsection{Usage}{
@@ -207,6 +217,7 @@ Deletes an existing Company record.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

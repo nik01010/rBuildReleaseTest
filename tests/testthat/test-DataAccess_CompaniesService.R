@@ -139,7 +139,9 @@ test_that("GetNumberOfCompaniesFoundedPerYear_ShouldReturnCorrectCounts_WhenCall
   testContext$DbConnection$insert(data = companies)
   expectedCounts <- companies %>%
     dplyr::group_by(founded_year) %>%
-    dplyr::count(name = "count")
+    dplyr::count(name = "count") %>%
+    dplyr::ungroup() %>%
+    as.data.frame()
   
   # Act
   result <- testCompaniesService$getNumberOfCompaniesFoundedPerYear()
