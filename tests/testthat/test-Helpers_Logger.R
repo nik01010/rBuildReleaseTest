@@ -1,4 +1,4 @@
-testthat::context("Logger")
+context("Logger")
 
 test_that("InitialiseLogger_ShouldSetupLogger_WhenCalled", {
   # Arrange
