@@ -1,4 +1,5 @@
-language: R
+language: r
+
 r:
   - release
   - oldrel
@@ -9,12 +10,12 @@ repos:
   
 services:
   - mongodb
+
 addons:
   apt:
     packages:
       - libv8-dev
       
-sudo: false
 cache: packages
 latex: false
 warnings_are_errors: false
