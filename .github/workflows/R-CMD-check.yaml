@@ -21,7 +21,6 @@ jobs:
       matrix:
         config:
           - {os: windows-latest, r: 'release'}
-          - {os: windows-latest, r: 'oldrel'}
           - {os: windows-latest, r: 'devel'}
         include:
           - os: windows-latest
