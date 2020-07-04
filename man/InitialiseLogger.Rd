@@ -15,9 +15,10 @@ InitialiseLogger(
 \item{logMessageFormat}{The required log message format.
 Defaults to [{level}] [{time}] [{namespace}] [{fn}]: {msg}. See logger::layout_glue_generator for options.}
 }
-\value{
-NULL
-#' @examples
+\description{
+Initialises a new logger
+}
+\examples{
 \dontrun{
 # Using  default settings:
 InitialiseLogger()
@@ -25,7 +26,5 @@ InitialiseLogger()
 # Using another log message format:
 InitialiseLogger(logLevel = logger::DEBUG, logMessageFormat = '{level}---{time}--- msg')
 }
-}
-\description{
-Initialises a new logger
+
 }

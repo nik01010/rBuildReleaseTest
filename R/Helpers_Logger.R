@@ -5,7 +5,7 @@
 #' @param logMessageFormat The required log message format.
 #' Defaults to [{level}] [{time}] [{namespace}] [{fn}]: {msg}. See logger::layout_glue_generator for options.
 #' @return NULL
-#' #' @examples
+#' @examples
 #' \dontrun{
 #' # Using  default settings:
 #' InitialiseLogger()
