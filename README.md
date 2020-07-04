@@ -17,6 +17,7 @@ This PoC package is used to explore:
 - Encapsulating the Service queries in an R6 class.
 - Using a database context class with support for basic dependency injection.
 - Scripting unit tests for basic functions and integration-style unit tests for the Service database queries.
+- Setting up a logger with custom message formatting, and using the logger throughout all layers of code.
 - Adding lint rules and integrating them within a test.
 - Using environment variables for greater flexibility and securing connection strings.
 - Creating a basic CI/CD pipeline to build and test the package, in TravisCI and Jenkins.
