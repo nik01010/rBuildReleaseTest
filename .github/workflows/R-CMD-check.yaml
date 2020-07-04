@@ -20,7 +20,9 @@ jobs:
         config:
           - {os: windows-latest, r: 'release'}
           - {os: windows-latest, r: 'devel'}
-        mongodb-version: [4.0, 4.2]
+        include:
+          - os: windows-latest
+            mongoContainer: -d -p 27017:27017 --name mongo mongo
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -35,12 +37,6 @@ jobs:
           r-version: ${{ matrix.config.r }}
 
       - uses: r-lib/actions/setup-pandoc@master
-
-      - name: Start MongoDB
-        uses: supercharge/mongodb-github-action@1.3.0
-        with:
-          mongodb-version: ${{ matrix.mongodb-version }}
-          mongodb-replica-set: test-rs
 
       - name: Query dependencies
         run: |
