@@ -42,9 +42,9 @@ Using this package requires the following:
 ### Main components
 There are several main components contained in the /R/ folder:
 - ApplicationDbContext: this class is used to initiate a database connection to MongoDb, against a provided connection string and database/collection name
-- CompaniesSchemaValidator: creates a schema definition for the Companies collection; any incoming data can be validated against the schema
+- CompaniesSchemaValidator: creates a schema definition for the companies data; any incoming data can be validated against the schema
 - InitialiseLogger: creates and configures an application Logger, using a custom message format with improved detail
-- CompaniesService: this class acts as a data service, by providing a set of robust queries against the Companies database, such as counting, reading and writing data. The database connection created above using the ApplicationDbContext class is injected into this CompaniesService. This allows all queries to be tested more easily, as we can inject a dummy database connection when running the integration tests
+- CompaniesService: this class acts as a data service, by providing a set of robust queries against the companies data, such as counting, reading and writing data. The database connection created above using the ApplicationDbContext class is injected into this CompaniesService. This allows all queries to be tested more easily, as we can inject a dummy database connection when running the integration tests
 
 ### Tests
 There are several types of tests included in the /tests/ folder:
@@ -54,10 +54,10 @@ There are several types of tests included in the /tests/ folder:
 - A linter check is included in the .lintr configuration file, based on camel and pascal case styling
 
 ### Continuous integration
-- <a href="https://travis-ci.org/github/nik01010/rBuildReleaseTest" target="_blank">TravisCI builds</a> are defined in the .travis.yml configuration file. These run for every pull request, and run on Mac OS and Linux, for R-rel, R-dev and R-oldrel.
+- <a href="https://travis-ci.org/github/nik01010/rBuildReleaseTest" target="_blank">TravisCI builds</a> are defined in the .travis.yml configuration file, and run on Mac OS and Linux, for three versions of the language: R-rel, R-dev and R-oldrel.
 - <a href="https://github.com/nik01010/rBuildReleaseTest/actions" target="_blank">GitHub Actions builds</a> are defined in the /.github/ folder, and run on Windows Server, for R-rel and R-dev.
-- Both TravisCI and GitHub Actions start up a fresh MongoDb localhost instance for every build, in order for the integration tests to run. Both also install the latest versions of any package dependencies for each build, but support caching packages to speed up run times when no new updates are available since the previous build.
-- Jenkins builds are defined in the Jenkinsfile and Makefile configs. Currently, the Jenkins builds are not containerised, but use the box's normal R library, and rely on a localhost MongoDb instance being installed.
+- Both TravisCI and GitHub Actions start up a fresh MongoDb localhost instance for every build, in order for the integration tests to run. Both also install the latest versions of any package dependencies for each build, but support caching packages to speed up run times when no new updates are available since the previous build. Both also run for every pull request and every commit into the default branch (develop)
+- Jenkins builds are defined in the Jenkinsfile and Makefile configs. Currently, these are not containerised, but use the box's normal R library, and rely on a localhost MongoDb instance being installed for tests
 
 
 ## How to use
