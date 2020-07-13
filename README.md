@@ -37,7 +37,7 @@ Using this package requires the following:
 
 
 ## R package design
-![Package structure](Helpers/Images/Package.png){ width=65% }
+![Package structure](Helpers/Images/Package.png)
 
 ### Main components
 There are several main components contained in the /R/ folder:
