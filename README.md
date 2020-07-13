@@ -9,19 +9,56 @@ Proof of Concept R Package to explore MongoDb, DevOps and best practice.
 [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
 <!-- badges: end -->
 
-![Package structure](Helpers/Images/Package.png)
-
 ## Aims
 This PoC package is used to explore:
-- Creating a low-level Service layer of code for interacting with a MongoDb database.
-- Encapsulating the Service queries in an R6 class.
-- Using a database context class with support for basic dependency injection.
-- Scripting unit tests for basic functions and integration-style unit tests for the Service database queries.
-- Setting up a logger with custom message formatting, and using the logger throughout all layers of code.
-- Adding lint rules and integrating them within a test.
-- Using environment variables for greater flexibility and securing connection strings.
-- Creating a basic CI/CD pipeline to build and test the package, in TravisCI and Jenkins.
-- Producing code coverage reports and linking them to a build.
+
+#### Database queries
+- Creating robust queries for reading and writing data stored in a MongoDb database
+- Using object-oriented programming to encapsulate queries in an R6 class
+
+#### Best practice
+- Automating code format checks using a custom linter
+- Setting up a logger with custom message formatting, applied throughout all layers of code
+- Using environment variables for greater flexibility and securing connection strings
+
+#### Automated testing
+- Writing unit tests for basic functions and integration-style tests for database queries
+- Producing test coverage reports with a minimum required threshold
+- Creating a Continuous Integration (CI) pipeline that builds, checks and tests the R package, runs linting rules, and test coverage analysis
+- Setting up CI pipelines on multiple platforms - Jenkins, TravisCI and GitHub actions, across multiple operating systems and R versions
+
+
+## Prerequisites
+Using this package requires the following:
+- Mongo Atlas instance, for running database queries (against the companies collection, sample_training database)
+- Localhost MongoDb instance, for running database integration tests
+- TravisCI account, and/or Jenkins instance, for running continuous integration tests
+- Some environment variables need setting up (see Annex at end)
+
+
+## R package design
+![Package structure](Helpers/Images/Package.png){ width=65% }
+
+### Main components
+There are several main components contained in the /R/ folder:
+- ApplicationDbContext: this class is used to initiate a database connection to MongoDb, against a provided connection string and database/collection name
+- CompaniesSchemaValidator: creates a schema definition for the Companies collection; any incoming data can be validated against the schema
+- InitialiseLogger: creates and configures an application Logger, using a custom message format with improved detail
+- CompaniesService: this class acts as a data service, by providing a set of robust queries against the Companies database, such as counting, reading and writing data. The database connection created above using the ApplicationDbContext class is injected into this CompaniesService. This allows all queries to be tested more easily, as we can inject a dummy database connection when running the integration tests
+
+### Tests
+There are several types of tests included in the /tests/ folder:
+- Integration-style unit tests, for testing the database connection and queries, the logger etc
+- Classical unit tests for checking the more standard functions 
+- Typically tests follow the C# naming and structure conventions
+- A linter check is included in the .lintr configuration file, based on camel and pascal case styling
+
+### Continuous integration
+- <a href="https://travis-ci.org/github/nik01010/rBuildReleaseTest" target="_blank">TravisCI builds</a> are defined in the .travis.yml configuration file. These run for every pull request, and run on Mac OS and Linux, for R-rel, R-dev and R-oldrel.
+- <a href="https://github.com/nik01010/rBuildReleaseTest/actions" target="_blank">GitHub Actions builds</a> are defined in the /.github/ folder, and run on Windows Server, for R-rel and R-dev.
+- Both TravisCI and GitHub Actions start up a fresh MongoDb localhost instance for every build, in order for the integration tests to run. Both also install the latest versions of any package dependencies for each build, but support caching packages to speed up run times when no new updates are available since the previous build.
+- Jenkins builds are defined in the Jenkinsfile and Makefile configs. Currently, the Jenkins builds are not containerised, but use the box's normal R library, and rely on a localhost MongoDb instance being installed.
+
 
 ## How to use
 ```R
@@ -88,7 +125,7 @@ rm(companiesService)
 
 ```
 
-## Set up environment variables
+## Annex: Set up environment variables
 This package depends on specific environment variables being present. Below are basic instructions for setting up the variables.
 #### On local Windows machine:
 - Ensure there is a .Renviron file in the User's Home directory (e.g. C:\Users\YourUsername\Documents).
