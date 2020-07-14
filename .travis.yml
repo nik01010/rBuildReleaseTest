@@ -2,12 +2,18 @@ language: r
 
 os:
   - linux
+  - osx
   
 r:
   - release
   - oldrel
   - devel
 
+jobs:
+  exclude:
+    - r: devel
+      os: osx
+      
 repos:
   CRAN: https://cloud.r-project.org
   
