@@ -30,7 +30,8 @@ ApplicationDbContext <- R6::R6Class(
     initialize = function(connectionString, database, collection, verbose = TRUE)
     {
       logger::log_info('Connecting to Database "{database}" in Collection "{collection}".')
-      # TODO: Add validations to check Database and Collection are not empty and check they exist on server
+      # TODO: Add validations to check Database and Collection are not empty 
+      # and check they exist on the MongoDb server
 
       tryCatch(
         {
