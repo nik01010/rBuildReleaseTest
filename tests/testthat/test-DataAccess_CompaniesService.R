@@ -28,7 +28,7 @@ test_that("GetCompaniesCount_ShouldReturnCorrectCount_WhenCalled", {
   expectedCount <- nrow(companies)
 
   # Act
-  result <- testCompaniesService$getCompaniesCount()
+  result <- testCompaniesService$GetCompaniesCount()
 
   # Assert
   expect_equal(expectedCount, result)
@@ -44,7 +44,7 @@ test_that("GetCompanies_ShouldReturnCorrectListOfCompanies_WhenCalled", {
   testContext$DbConnection$insert(data = companies)
 
   # Act
-  result <- testCompaniesService$getCompanies()
+  result <- testCompaniesService$GetCompanies()
 
   # Assert
   expect_equal(companies, result)
@@ -64,7 +64,7 @@ test_that("GetCompany_ShouldReturnCorrectCompany_IfCalledWithValidName", {
     dplyr::filter(name == companyName)
 
   # Act
-  result <- testCompaniesService$getCompany(companyName = companyName)
+  result <- testCompaniesService$GetCompany(companyName = companyName)
 
   # Assert
   expect_equal(expectedCompany, result)
@@ -82,7 +82,7 @@ test_that("GetCompanyId_ShouldReturnId_IfCalledWithValidName", {
   testContext$DbConnection$insert(data = companies)
   
   # Act
-  result <- testCompaniesService$getCompanyId(companyName = companyToFind)
+  result <- testCompaniesService$GetCompanyId(companyName = companyToFind)
   
   # Assert
   expect_true(!is.null(result))
@@ -103,7 +103,7 @@ test_that("GetOldestCompanies_ShouldReturnCorrectList_IfCalledWithValidLimit", {
     dplyr::slice(1:limit)
 
   # Act
-  result <- testCompaniesService$getOldestCompanies(limit = limit)
+  result <- testCompaniesService$GetOldestCompanies(limit = limit)
 
   # Assert
   expect_equal(expectedCompanies, result)
@@ -122,7 +122,7 @@ test_that("GetOldestCompanies_ShouldFilterOutNulls_WhenCalled", {
   expectedCompanies <- data.frame()
 
   # Act
-  result <- testCompaniesService$getOldestCompanies(limit = limit)
+  result <- testCompaniesService$GetOldestCompanies(limit = limit)
 
   # Assert
   expect_equal(expectedCompanies, result)
@@ -144,7 +144,7 @@ test_that("GetNumberOfCompaniesFoundedPerYear_ShouldReturnCorrectCounts_WhenCall
     as.data.frame()
   
   # Act
-  result <- testCompaniesService$getNumberOfCompaniesFoundedPerYear()
+  result <- testCompaniesService$GetNumberOfCompaniesFoundedPerYear()
   
   # Assert
   expect_equal(expectedCounts, result)
@@ -165,12 +165,12 @@ test_that("CreateCompany_ShouldCreateNewCompany_WhenCalledWithValidJson", {
   )
   
   # Act
-  result <- testCompaniesService$createCompany(companyDetails = newCompany)
+  result <- testCompaniesService$CreateCompany(companyDetails = newCompany)
   
   # Assert
   expect_equal(nrow(expectedCompanies), result$nInserted)
   expect_equal(list(), result$writeErrors)
-  actualCompanies <- testCompaniesService$getCompanies()
+  actualCompanies <- testCompaniesService$GetCompanies()
   expect_equal(expectedCompanies, actualCompanies)
 })
 
@@ -185,12 +185,12 @@ test_that("CreateCompany_ShouldThrowError_IfCalledWithInvalidJsonKeys", {
   }}')
   
   # Act
-  result <- expect_error(testCompaniesService$createCompany(companyDetails = invalidCompany))
+  result <- expect_error(testCompaniesService$CreateCompany(companyDetails = invalidCompany))
 
   # Assert
   expect_s3_class(result, "error")
   expect_equal("New company is not valid.", result$message)
-  actualCompanies <- testCompaniesService$getCompanies()
+  actualCompanies <- testCompaniesService$GetCompanies()
   expect_equal(0, nrow(actualCompanies))
 })
 
@@ -203,17 +203,17 @@ test_that("CreateCompany_ShouldThrowError_IfCompanyAlreadyExists", {
     "name": "{companyName}",
     "founded_year": {companyFoundedYear}
   }}')
-  testCompaniesService$createCompany(companyDetails = company)
+  testCompaniesService$CreateCompany(companyDetails = company)
   duplicateCompany <- company
   expectedErrorMessage <- glue::glue("Company {companyName} already exists.")
   
   # Act
-  result <- expect_error(testCompaniesService$createCompany(companyDetails = duplicateCompany))
+  result <- expect_error(testCompaniesService$CreateCompany(companyDetails = duplicateCompany))
   
   # Assert
   expect_s3_class(result, "error")
   expect_equal(expectedErrorMessage, result$message)
-  actualCompanies <- testCompaniesService$getCompanies()
+  actualCompanies <- testCompaniesService$GetCompanies()
   expect_equal(1, nrow(actualCompanies))
 })
 
@@ -226,7 +226,7 @@ test_that("EditCompany_ShouldUpdateCompanyDetails_IfCalledWithCorrectDetails", {
     "name": "{companyName}",
     "founded_year": {oldCompanyFoundedYear}
   }}')
-  testCompaniesService$createCompany(companyDetails = oldCompanyDetails)
+  testCompaniesService$CreateCompany(companyDetails = oldCompanyDetails)
   
   newCompanyFoundedYear <- 2020
   newCompanyDetails <- glue::glue('{{
@@ -240,13 +240,13 @@ test_that("EditCompany_ShouldUpdateCompanyDetails_IfCalledWithCorrectDetails", {
   )
   
   # Act
-  result <- testCompaniesService$editCompany(companyName = companyName, newCompanyDetails = newCompanyDetails)
+  result <- testCompaniesService$EditCompany(companyName = companyName, newCompanyDetails = newCompanyDetails)
   
   # Assert
   expect_equal(nrow(expectedCompany), result$modifiedCount)
   expect_equal(nrow(expectedCompany), result$matchedCount)
   expect_equal(0, result$upsertedCount)
-  actualCompany <- testCompaniesService$getCompany(companyName = companyName)
+  actualCompany <- testCompaniesService$GetCompany(companyName = companyName)
   expect_equal(expectedCompany, actualCompany)
 })
 
@@ -258,7 +258,7 @@ test_that("EditCompany_ShouldThrowError_IfCalledForInvalidCompany", {
   
   # Act
   result <- expect_error(
-    testCompaniesService$editCompany(
+    testCompaniesService$EditCompany(
       companyName = invalidCompany, 
       newCompanyDetails = "{}"
     )
@@ -282,7 +282,7 @@ test_that("EditCompany_ShouldThrowError_IfMultipleCompaniesExistWithSameName", {
   
   # Act
   result <- expect_error(
-    testCompaniesService$editCompany(
+    testCompaniesService$EditCompany(
       companyName = duplicateCompanyName, 
       newCompanyDetails = "{}"
     )
@@ -306,10 +306,10 @@ test_that("DeleteCompany_ShouldRemoveRecord_IfCalledForExistingCompany", {
     dplyr::filter(name != companyToDelete)
 
   # Act
-  result <- testCompaniesService$deleteCompany(companyName = companyToDelete)
+  result <- testCompaniesService$DeleteCompany(companyName = companyToDelete)
 
   # Assert
-  actualCompanies <- testCompaniesService$getCompanies()
+  actualCompanies <- testCompaniesService$GetCompanies()
   expect_equal(expectedCompanies, actualCompanies)
 })
 

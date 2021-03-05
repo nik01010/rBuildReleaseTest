@@ -29,15 +29,15 @@ testCompaniesService <- CompaniesService$new(dbContext = MongoDbContext)
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{CompaniesService$new()}}
-\item \href{#method-getCompaniesCount}{\code{CompaniesService$getCompaniesCount()}}
-\item \href{#method-getCompanies}{\code{CompaniesService$getCompanies()}}
-\item \href{#method-getCompany}{\code{CompaniesService$getCompany()}}
-\item \href{#method-getCompanyId}{\code{CompaniesService$getCompanyId()}}
-\item \href{#method-getOldestCompanies}{\code{CompaniesService$getOldestCompanies()}}
-\item \href{#method-getNumberOfCompaniesFoundedPerYear}{\code{CompaniesService$getNumberOfCompaniesFoundedPerYear()}}
-\item \href{#method-createCompany}{\code{CompaniesService$createCompany()}}
-\item \href{#method-editCompany}{\code{CompaniesService$editCompany()}}
-\item \href{#method-deleteCompany}{\code{CompaniesService$deleteCompany()}}
+\item \href{#method-GetCompaniesCount}{\code{CompaniesService$GetCompaniesCount()}}
+\item \href{#method-GetCompanies}{\code{CompaniesService$GetCompanies()}}
+\item \href{#method-GetCompany}{\code{CompaniesService$GetCompany()}}
+\item \href{#method-GetCompanyId}{\code{CompaniesService$GetCompanyId()}}
+\item \href{#method-GetOldestCompanies}{\code{CompaniesService$GetOldestCompanies()}}
+\item \href{#method-GetNumberOfCompaniesFoundedPerYear}{\code{CompaniesService$GetNumberOfCompaniesFoundedPerYear()}}
+\item \href{#method-CreateCompany}{\code{CompaniesService$CreateCompany()}}
+\item \href{#method-EditCompany}{\code{CompaniesService$EditCompany()}}
+\item \href{#method-DeleteCompany}{\code{CompaniesService$DeleteCompany()}}
 \item \href{#method-clone}{\code{CompaniesService$clone()}}
 }
 }
@@ -64,12 +64,12 @@ A new CompaniesService object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getCompaniesCount"></a>}}
-\if{latex}{\out{\hypertarget{method-getCompaniesCount}{}}}
-\subsection{Method \code{getCompaniesCount()}}{
+\if{html}{\out{<a id="method-GetCompaniesCount"></a>}}
+\if{latex}{\out{\hypertarget{method-GetCompaniesCount}{}}}
+\subsection{Method \code{GetCompaniesCount()}}{
 Gets the number of Companies.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$getCompaniesCount()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$GetCompaniesCount()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
@@ -77,12 +77,12 @@ Integer.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getCompanies"></a>}}
-\if{latex}{\out{\hypertarget{method-getCompanies}{}}}
-\subsection{Method \code{getCompanies()}}{
+\if{html}{\out{<a id="method-GetCompanies"></a>}}
+\if{latex}{\out{\hypertarget{method-GetCompanies}{}}}
+\subsection{Method \code{GetCompanies()}}{
 Returns a data frame of all Companies.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$getCompanies()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$GetCompanies()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
@@ -90,12 +90,12 @@ Dataframe.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getCompany"></a>}}
-\if{latex}{\out{\hypertarget{method-getCompany}{}}}
-\subsection{Method \code{getCompany()}}{
+\if{html}{\out{<a id="method-GetCompany"></a>}}
+\if{latex}{\out{\hypertarget{method-GetCompany}{}}}
+\subsection{Method \code{GetCompany()}}{
 Returns a data frame for the required Company name.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$getCompany(companyName)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$GetCompany(companyName)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -110,12 +110,12 @@ Dataframe.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getCompanyId"></a>}}
-\if{latex}{\out{\hypertarget{method-getCompanyId}{}}}
-\subsection{Method \code{getCompanyId()}}{
+\if{html}{\out{<a id="method-GetCompanyId"></a>}}
+\if{latex}{\out{\hypertarget{method-GetCompanyId}{}}}
+\subsection{Method \code{GetCompanyId()}}{
 Returns the Id of the required Company name.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$getCompanyId(companyName)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$GetCompanyId(companyName)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -130,12 +130,12 @@ Integer.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getOldestCompanies"></a>}}
-\if{latex}{\out{\hypertarget{method-getOldestCompanies}{}}}
-\subsection{Method \code{getOldestCompanies()}}{
+\if{html}{\out{<a id="method-GetOldestCompanies"></a>}}
+\if{latex}{\out{\hypertarget{method-GetOldestCompanies}{}}}
+\subsection{Method \code{GetOldestCompanies()}}{
 Returns a data frame of the oldest Companies, for the required limit.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$getOldestCompanies(limit = 10)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$GetOldestCompanies(limit = 10)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -150,12 +150,12 @@ Dataframe.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getNumberOfCompaniesFoundedPerYear"></a>}}
-\if{latex}{\out{\hypertarget{method-getNumberOfCompaniesFoundedPerYear}{}}}
-\subsection{Method \code{getNumberOfCompaniesFoundedPerYear()}}{
+\if{html}{\out{<a id="method-GetNumberOfCompaniesFoundedPerYear"></a>}}
+\if{latex}{\out{\hypertarget{method-GetNumberOfCompaniesFoundedPerYear}{}}}
+\subsection{Method \code{GetNumberOfCompaniesFoundedPerYear()}}{
 Returns the number of Companies founded per year.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$getNumberOfCompaniesFoundedPerYear()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$GetNumberOfCompaniesFoundedPerYear()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
@@ -163,12 +163,12 @@ Dataframe.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-createCompany"></a>}}
-\if{latex}{\out{\hypertarget{method-createCompany}{}}}
-\subsection{Method \code{createCompany()}}{
+\if{html}{\out{<a id="method-CreateCompany"></a>}}
+\if{latex}{\out{\hypertarget{method-CreateCompany}{}}}
+\subsection{Method \code{CreateCompany()}}{
 Creates a new Company record.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$createCompany(companyDetails)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$CreateCompany(companyDetails)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -180,12 +180,12 @@ Creates a new Company record.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-editCompany"></a>}}
-\if{latex}{\out{\hypertarget{method-editCompany}{}}}
-\subsection{Method \code{editCompany()}}{
+\if{html}{\out{<a id="method-EditCompany"></a>}}
+\if{latex}{\out{\hypertarget{method-EditCompany}{}}}
+\subsection{Method \code{EditCompany()}}{
 Edits an existing Company record.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$editCompany(companyName, newCompanyDetails)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$EditCompany(companyName, newCompanyDetails)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -199,12 +199,12 @@ Edits an existing Company record.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-deleteCompany"></a>}}
-\if{latex}{\out{\hypertarget{method-deleteCompany}{}}}
-\subsection{Method \code{deleteCompany()}}{
+\if{html}{\out{<a id="method-DeleteCompany"></a>}}
+\if{latex}{\out{\hypertarget{method-DeleteCompany}{}}}
+\subsection{Method \code{DeleteCompany()}}{
 Deletes an existing Company record.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$deleteCompany(companyName)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CompaniesService$DeleteCompany(companyName)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

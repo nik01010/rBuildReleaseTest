@@ -6,14 +6,20 @@
 \usage{
 InitialiseLogger(
   logLevel = logger::DEBUG,
+  logAppender = logger::appender_stdout,
   logMessageFormat = "[{level}] [{time}] [{namespace}] [{fn}]: {msg}"
 )
 }
 \arguments{
-\item{logLevel}{The required log level threshold to capture in the logger.}
+\item{logLevel}{The required log level threshold to capture in the logger. 
+Defaults to logger::DEBUG.}
+
+\item{logAppender}{The required log appender to use in the logger. 
+Defaults to logger::appender_stdout.}
 
 \item{logMessageFormat}{The required log message format.
-Defaults to [{level}] [{time}] [{namespace}] [{fn}]: {msg}. See logger::layout_glue_generator for options.}
+Defaults to '[{level}] [{time}] [{namespace}] [{fn}]: {msg}'. 
+See logger::layout_glue_generator for options.}
 }
 \description{
 Initialises a new logger

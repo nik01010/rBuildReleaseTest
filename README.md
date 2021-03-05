@@ -92,32 +92,32 @@ companiesService <- rBuildReleaseTest::CompaniesService$new(
 )
 
 # Example queries
-count <- companiesService$getCompaniesCount()
+count <- companiesService$GetCompaniesCount()
 
-allCompanies <- companiesService$getCompanies()
+allCompanies <- companiesService$GetCompanies()
 
-companyFacebook <- companiesService$getCompany(companyName = "Facebook")
-companyNokia <- companiesService$getCompany(companyName = "Nokia")
+companyFacebook <- companiesService$GetCompany(companyName = "Facebook")
+companyNokia <- companiesService$GetCompany(companyName = "Nokia")
 
-companyNokiaId <- companiesService$getCompanyId(companyName = "Nokia")
+companyNokiaId <- companiesService$GetCompanyId(companyName = "Nokia")
 
-numberOfCompaniesPerYear <- companiesService$getNumberOfCompaniesFoundedPerYear()
+numberOfCompaniesPerYear <- companiesService$GetNumberOfCompaniesFoundedPerYear()
 
-oldestCompanies <- companiesService$getOldestCompanies(limit = 25)
+oldestCompanies <- companiesService$GetOldestCompanies(limit = 25)
 
 newCompany <- '{
   "name": "TestCompany1",
   "founded_year": 2019
 }'
-companiesService$createCompany(companyDetails = newCompany)
+companiesService$CreateCompany(companyDetails = newCompany)
 
 newCompanyEdited <- '{
   "name": "TestCompany1",
   "founded_year": 2020
 }'
-companiesService$editCompany(companyName = "TestCompany1", newCompanyDetails = newCompanyEdited)
+companiesService$EditCompany(companyName = "TestCompany1", newCompanyDetails = newCompanyEdited)
 
-companiesService$deleteCompany(companyName = "TestCompany1")
+companiesService$DeleteCompany(companyName = "TestCompany1")
 
 # Cleanup
 rm(companiesContext)
